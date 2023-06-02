@@ -1,3 +1,5 @@
+
+#placing the __init__ in a folder it becomes a python package  
 from flask import Flask
 
 def create_app():
