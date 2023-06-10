@@ -9,7 +9,7 @@ def  auth_page():
 
 @auth.route('/login')
 def login():
-    return render_template("login.html",text =" hello")
+    return render_template("login.html",text =" hello",boolean= False)
 
 @auth.route('/logout')
 def logout():

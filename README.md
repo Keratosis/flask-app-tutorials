@@ -9,7 +9,12 @@ This repository contains tutorials for building web applications with Flask.
 2-pip install flask-login
 3-pip install flask-sqlalchemy
 
-
+# writing if statement 
+{% if boolean == True%}
+yes its True
+{% else %}
+no its false
+{% endif %}
 
 templets(jinga) allows you to mix html language with python 
 render html in flask.(jinga)
