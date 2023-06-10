@@ -1,25 +1,25 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 #By using blueprints, you can split your application into multiple modules, each responsible for its own set of routes and views. 
 
 auth = Blueprint('auth',__name__)
 
 @auth.route('/auth')
 def  auth_page():
-    return 'you are in the auth page'
+    return  render_template("auth.html")
 
 @auth.route('/login')
 def login():
-    return "<p>login</P>"
+    return render_template("login.html",text =" hello")
 
 @auth.route('/logout')
 def logout():
-    return "<p>logout</P>"
+    return render_template("logout.html")
 
 @auth.route('/sign_up')
 def sign_up():
-    return '<p>sign_up</P>'
+    return render_template("sign_up.html")
 
-@auth.route('/home')
-def home():
-    return '<p>home</P>'
+@auth.route('/preview')
+def preview():
+    return render_template("preview.html")
     

@@ -36,15 +36,15 @@
                  <a class= "nav-item nav-link" id ="logout" href ="/logout">logout</a>
                  <a class= "nav-item nav-link" id ="/sign_up" href ="/sign_up">sign_up</a>
                  <a class= "nav-item nav-link" id ="auth_page" href ="/auth">auth_page</a>
-                 <a class= "nav-item nav-link" id ="home" href ="/home">Home </a>
-
-
-
+                 <a class= "nav-item nav-link" id ="preview" href ="/preview">preview</a>
 
             </div>
            </div>
-        <nav>
-
+          </nav>
+          <div class="container" >
+            {% block content%}
+            {%endblock%}
+           </div>
 
             <script
             src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
