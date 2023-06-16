@@ -9,6 +9,7 @@ from flask_login import login_user,login_required,logout_user,current_user
 auth = Blueprint('auth',__name__)
 
 @auth.route('/auth')
+@login_required 
 def  auth_page():
     return  render_template("auth.html")
 
@@ -22,6 +23,8 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash("login successfully!",category = 'success')
+                login_user(user, rememder=True)
+                #Remembers the user if hes logged in
                 return redirect(url_for('view.home'))
             else:
                 flash('password is incorrect,try again',category = 'error')
@@ -31,8 +34,13 @@ def login():
     return render_template("login.html") 
 
 @auth.route('/logout')
+@login_required #this route can't be accessed unless the user is logged in
 def logout():
-    return render_template("logout.html")
+    logout_user() #logs out te current user 
+    
+    # return render_template("logout.html")
+    return redirect(url_for('auth.login'))
+#returns the user to the loggin page
 
 @auth.route('/sign_up',methods =["GET",'POST']) # METHODS allow the http request in the current page 
 def sign_up():
@@ -59,6 +67,7 @@ def sign_up():
             new_user = User(email=email,first_name=firstName,password = generate_password_hash(password1,method ='sha256'))
             db.session.add(new_user)
             db.session.commit()
+            login_user(user,remember = True)
             flash ('Account created!', category ="success")
             # add to database
             return redirect(url_for('view.home'))
@@ -69,6 +78,7 @@ def sign_up():
     return render_template("sign_up.html")
 
 @auth.route('/preview')
+@login_required 
 def preview():
     return render_template("preview.html")
     
