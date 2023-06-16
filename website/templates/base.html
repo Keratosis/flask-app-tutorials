@@ -32,12 +32,15 @@
       </button>    
            <div class= "collapse navbar-collapse" id= "navbar"> 
             <div class= "navbar-nav">
-                 <a class= "nav-item nav-link" id ="login" href ="/login">login </a>
-                 <a class= "nav-item nav-link" id ="logout" href ="/logout">logout</a>
-                 <a class= "nav-item nav-link" id ="/sign_up" href ="/sign_up">sign_up</a>
-                 <a class= "nav-item nav-link" id ="auth_page" href ="/auth">auth_page</a>
+              {% if user.is_authenticated %} 
                  <a class= "nav-item nav-link" id ="preview" href ="/preview">preview</a>
+                 <a class= "nav-item nav-link" id ="auth_page" href ="/auth">auth_page</a>
+                <a class= "nav-item nav-link" id ="logout" href ="/logout">logout</a>
+                {% else%}
+                <a class= "nav-item nav-link" id ="login" href ="/login">login </a>
+                <a class= "nav-item nav-link" id ="/sign_up" href ="/sign_up">sign_up</a>
 
+                {%endif%}
             </div>
            </div>
           </nav>

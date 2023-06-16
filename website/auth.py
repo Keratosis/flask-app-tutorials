@@ -11,7 +11,7 @@ auth = Blueprint('auth',__name__)
 @auth.route('/auth')
 @login_required 
 def  auth_page():
-    return  render_template("auth.html")
+    return  render_template("auth.html",user=current_user)
 
 @auth.route('/login', methods =["GET",'POST'])
 def login():
@@ -23,7 +23,7 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash("login successfully!",category = 'success')
-                login_user(user, rememder=True)
+                login_user(user, remember=True)
                 #Remembers the user if hes logged in
                 return redirect(url_for('view.home'))
             else:
@@ -31,12 +31,12 @@ def login():
         else:
             flash('email does not exist')
                 
-    return render_template("login.html") 
+    return render_template("login.html", user = current_user) 
 
 @auth.route('/logout')
 @login_required #this route can't be accessed unless the user is logged in
 def logout():
-    logout_user() #logs out te current user 
+    logout_user() #logs out the current user 
     
     # return render_template("logout.html")
     return redirect(url_for('auth.login'))
@@ -75,10 +75,9 @@ def sign_up():
         
         
         
-    return render_template("sign_up.html")
+    return render_template("sign_up.html",user=current_user)
 
 @auth.route('/preview')
 @login_required 
 def preview():
-    return render_template("preview.html")
-    
+    return render_template("preview.html",user=current_user)
