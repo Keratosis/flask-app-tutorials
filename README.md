@@ -23,6 +23,6 @@ post -making change to the state of ur website (update)
 # message flash
 import flash
 
-
+https://youtu.be/dam0GPOAvVI
 templets(jinga) allows you to mix html language with python 
 render html in flask.(jinga)
